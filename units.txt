@@ -1,0 +1,8 @@
+# Unit Calculator custom unit definitions
+#
+# Pint形式で独自単位を1行ずつ定義してください。
+# このファイルが空でも、Pintの標準単位は利用できます。
+#
+# 例:
+# custom_count = 0.25 * millimeter = cnt
+# custom_knot = 1852 * meter / hour = ckt
