@@ -6,11 +6,11 @@ $entryPoint = Join-Path $projectRoot "unit_calculator.py"
 $unitsFile = Join-Path $projectRoot "units.txt"
 
 if (-not (Test-Path $pythonPath)) {
-    throw "仮想環境がありません。先に 'py -m venv .venv' を実行してください。"
+    throw "Virtual environment not found. Run 'py -m venv .venv' first."
 }
 
 if (-not (Test-Path $entryPoint)) {
-    throw "unit_calculator.py がありません。先にアプリを実装してください。"
+    throw "unit_calculator.py not found. Implement the application first."
 }
 
 Push-Location $projectRoot
@@ -24,7 +24,7 @@ try {
         $entryPoint
 
     if ($LASTEXITCODE -ne 0) {
-        throw "PyInstallerによるビルドに失敗しました。"
+        throw "PyInstaller build failed."
     }
 
     $outputDirectory = Join-Path $projectRoot "dist\UnitCalculator"
@@ -32,7 +32,7 @@ try {
         Copy-Item $unitsFile (Join-Path $outputDirectory "units.txt") -Force
     }
 
-    Write-Host "作成完了: $outputDirectory"
+    Write-Host "Build complete: $outputDirectory"
 }
 finally {
     Pop-Location
